@@ -9,7 +9,7 @@ public class UISelector {
     public UIModule getUi(String arg) throws InvalidUIException {
         UIType uiType;
         uiType = getUiType(arg);
-        UIModule ui = UIFactory.createUI(uiType);
+        UIModule ui = UIFactory.createUI(uiType, null, null);
         return ui;
     }
 

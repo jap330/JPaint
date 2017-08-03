@@ -1,6 +1,7 @@
 package main;
-
+import controller.ApplicationSettings;
 import controller.IPaintController;
+import model.ShapeList;
 import controller.JPaintController;
 import view.GuiUiModule.Gui;
 import view.UIFactory;
@@ -17,8 +18,10 @@ public class Main {
 
             UISelector selector = new UISelector();
             UIModule ui = selector.getUi(args[0]);*/
-            UIModule ui = UIFactory.createUI(UIType.GUI);
-            IPaintController controller = new JPaintController(ui);
+        	ApplicationSettings settings = new ApplicationSettings();
+        	ShapeList shapeList = new ShapeList();
+            UIModule ui = UIFactory.createUI(UIType.GUI,settings, shapeList);
+            IPaintController controller = new JPaintController(ui, settings);
             JPaint jpaintProgram = new JPaint(controller);
             jpaintProgram.run();
         } catch (Throwable ex) {
